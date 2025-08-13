@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
+    android:background="#F9F9F9"
+    android:id="@+id/main"
     tools:context=".PortfolioActivity">
 
-    <!-- Top Bar -->
+    <!-- ===== Top Bar ===== -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="0dp"
@@ -34,43 +35,117 @@
             android:src="@drawable/arrow_down" />
     </LinearLayout>
 
-    <!-- Tabs -->
+    <!-- ===== Tabs: Holdings & Positions ===== -->
     <LinearLayout
         android:id="@+id/tabs"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingVertical="8dp"
+        android:gravity="center"
+        android:padding="12dp"
         android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
+        <!--
         <TextView
+            android:id="@+id/holdingsTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Holdings 7"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/blue"
-            android:padding="8dp" />
+            android:textColor="@color/blue" />
+
+        <View
+            android:id="@+id/holdingsUnderline"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@color/blue"
+            android:visibility="visible"/>
+
+
 
         <TextView
+            android:id="@+id/positionsTab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:text="Positions"
-            android:padding="8dp"
-            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="@color/black" />
+
+        <View
+            android:id="@+id/positionUnderline"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@color/blue"
+            android:visibility="visible"/>
+            -->
+        <!-- Holdings tab -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/holdingsTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Holdings 7"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue" />
+
+            <!-- underline only as wide as text -->
+            <View
+                android:id="@+id/holdingsUnderline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/blue"
+                android:visibility="visible"/>
+        </LinearLayout>
+
+        <!-- Positions tab -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="32dp">
+
+            <TextView
+                android:id="@+id/positionsTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Positions"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <View
+                android:id="@+id/positionsUnderline"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/blue"
+                android:visibility="gone"/>
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Card for Invested / Current / P&L -->
+    <!-- ===== Card with Invested / Current / P&L ===== -->
     <androidx.cardview.widget.CardView
         android:id="@+id/summaryCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        app:cardElevation="2dp"
         app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintTop_toBottomOf="@id/tabs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -79,131 +154,377 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="25dp">
+
+            <!-- Row: Invested & Current -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Invested"
+                    android:textSize="14sp"
+                    android:textColor="#666" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current"
+                    android:textSize="14sp"
+                    android:textColor="#666" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:paddingBottom="8dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/investedValue"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_height="0dp"
-                        android:layout_width="0dp"
-                        android:text="Invested"
-                        android:textColor="@color/gray"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_height="0dp"
-                        android:layout_width="0dp"
-                        android:text="17,958.59"
-                        android:textStyle="bold"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:text="17,958.59"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_height="0dp"
-                        android:layout_width="0dp"
-                        android:text="Current"
-                        android:textColor="@color/gray"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:text="13,221.08"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:layout_height="0dp"
-                        android:layout_width="0dp"/>
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/currentValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13,221.08"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
+            <!-- Divider -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/light_gray"
-                android:layout_marginVertical="8dp" />
+                android:background="#E0E0E0" />
 
+            <!-- Row: P&L -->
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="start">
+                android:layout_marginTop="8dp">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="P and L"
-                    android:textColor="@color/gray"
-                    android:textSize="12sp"
-                    android:layout_height="0dp"
-                    android:layout_width="0dp"/>
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:text="-4,737.51 (-26.38%)"
-                    android:textColor="@color/red"
-                    android:textStyle="bold"
+                    android:id="@+id/plValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="-4,737.51"
                     android:textSize="16sp"
-                    android:layout_height="0dp"
-                     android:layout_width="0dp"/>
+                    android:textStyle="bold"
+                    android:textColor="@android:color/holo_red_dark" />
+
+                <TextView
+                    android:id="@+id/plPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="-26.38%"
+                    android:textSize="14sp"
+                    android:background="@drawable/rounded_bg_red"
+                    android:padding="4dp"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
+            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <!-- Left Column (aligns with "Invested") -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="P and L"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Right Column (aligns with "Current") -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/plValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-4,737.51"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <TextView
+                        android:id="@+id/plPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="-26.38%"
+                        android:textSize="14sp"
+                        android:background="@drawable/rounded_bg_red"
+                        android:padding="4dp"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Filters Row -->
+    <!-- ===== Symbol Row (Below Card, Above RecyclerView) ===== -->
+   <!--
     <LinearLayout
-        android:id="@+id/filterRow"
+        android:id="@+id/symbolRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:padding="12dp"
         android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/summaryCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_search"
+            android:tint="#444" />
+
+        <TextView
+            android:id="@+id/equityBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Equity ▼"
+            android:textSize="14sp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/familyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="Family"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/analyticsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:text="Analytics"
+            android:textSize="14sp"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+    -->
+    <LinearLayout
+        android:id="@+id/symbolRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/summaryCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Search icon -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_search"
+            android:tint="#444"
+            android:gravity="center" />
+
+        <!-- Equity -->
+        <TextView
+            android:id="@+id/equityBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Equity ▼"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Family -->
+        <TextView
+            android:id="@+id/familyBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Family"
+            android:textSize="14sp" />
+
+        <!-- Analytics -->
+        <TextView
+            android:id="@+id/analyticsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Analytics"
+            android:textSize="14sp"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+
+
+
+
+    <!--new change -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/portfolioRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="3dp"
+
+    app:layout_constraintTop_toBottomOf="@id/symbolRow"
+    app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:listitem="@layout/portfolio_item_stock"/>
+
+
+        <!-- Fixed Bottom Navigation -->
+    <!--  Bottom Navigation moved here as sibling -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <!-- Watchlist -->
+    <LinearLayout
+        android:id="@+id/nav_watchlist"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_filter" />
+            android:src="@drawable/ic_watchlist"
+            android:tint="#333333" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Equity"
-            android:layout_marginStart="8dp" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_family" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/analysis" />
+            android:text="Watchlist"
+            android:textSize="12sp"
+            android:textColor="#333333" />
     </LinearLayout>
 
-    <!-- List of Stocks -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stockRecyclerView"
+    <!-- Orders -->
+    <LinearLayout
+        android:id="@+id/nav_orders"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/filterRow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
 
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_orders"
+            android:tint="#333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orders"
+            android:textSize="12sp"
+            android:textColor="#333333" />
+    </LinearLayout>
+
+    <!-- Portfolio -->
+    <LinearLayout
+        android:id="@+id/nav_portfolio"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_portfolio"
+            android:tint="#333333" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Portfolio"
+            android:textSize="12sp"
+            android:textColor="#333333" />
+    </LinearLayout>
+
+    <!-- Profile -->
+    <LinearLayout
+        android:id="@+id/nav_profile"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_profile"
+            android:tint="#2196F3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZH0599"
+            android:textSize="12sp"
+            android:textColor="#2196F3" />
+    </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

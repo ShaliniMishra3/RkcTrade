@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tradeapp.R
 import com.example.tradeapp.model.Stock
 
-class PortfolioStockAdapter(private val stocks: List<Stock>):RecyclerView.Adapter<PortfolioStockAdapter.StockViewHolder>(){
+class PortfolioStockAdapter(private var stocks: List<Stock>):RecyclerView.Adapter<PortfolioStockAdapter.StockViewHolder>(){
     data class ListStock (
         val qty:String,
         val avg:String,
@@ -20,34 +20,62 @@ class PortfolioStockAdapter(private val stocks: List<Stock>):RecyclerView.Adapte
         val change:String
 
     )
-
+    fun updateData(newStocks: List<Stock>) {
+        stocks = newStocks
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): PortfolioStockAdapter.StockViewHolder {
-       val view=LayoutInflater.from(parent.context).inflate(R.layout.portfolio_item_stock,parent)
+       val view=LayoutInflater.from(parent.context).inflate(R.layout.portfolio_item_stock,parent,false)
        return StockViewHolder(view)
     }
 
   inner class StockViewHolder(view: View):RecyclerView.ViewHolder(view){
-      val tvQtyAvg:TextView=view.findViewById(R.id.tvQtyAvg)
-      val tvPercentChange:TextView=view.findViewById(R.id.tvPercentChange)
-      val tvStockName:TextView=view.findViewById(R.id.tvStockName)
-      val tvInvested:TextView=view.findViewById(R.id.tvInvested)
-      val tvEvent:TextView=view.findViewById(R.id.tvEvent)
-      val tvLtp:TextView=view.findViewById(R.id.tvLtp)
-      val tvChange:TextView=view.findViewById(R.id.tvChange)
+
+   val tvQty: TextView = view.findViewById(R.id.qtyText)
+      val tvAvg: TextView = view.findViewById(R.id.avgText)
+      val tvStockName: TextView = view.findViewById(R.id.stockName)
+      val tvPercentChange: TextView = view.findViewById(R.id.percentageText)
+      val tvPL: TextView = view.findViewById(R.id.plText)
+      val tvInvested: TextView = view.findViewById(R.id.investedText)
+      val tvLtp: TextView = view.findViewById(R.id.ltpText)
+
   }
 
     override fun onBindViewHolder(holder: PortfolioStockAdapter.StockViewHolder, position: Int) {
+
         val stock=stocks[position]
-        holder.tvQtyAvg.text = "Qty. ${stock.qty} • Avg. ${stock.avg}"
-        holder.tvPercentChange.text = stock.percentChange
+
+        // Qty & Avg
+        holder.tvQty.text = "Qty. ${stock.qty}"
+        holder.tvAvg.text = "Avg. ${stock.avg}"
+
+        // Stock Name
         holder.tvStockName.text = stock.name
+
+        // Percent Change & P&L (red if negative, green if positive)
+        holder.tvPercentChange.text = stock.percentChange
+        holder.tvPL.text = stock.pl
+
+        try {
+            val percent = stock.percentChange.replace("%", "").toDouble()
+            if (percent < 0) {
+                // loss → red
+                holder.tvPercentChange.setTextColor(holder.itemView.context.getColor(android.R.color.holo_red_dark))
+                holder.tvPL.setTextColor(holder.itemView.context.getColor(android.R.color.holo_red_dark))
+            } else {
+                // profit → green
+                holder.tvPercentChange.setTextColor(holder.itemView.context.getColor(android.R.color.holo_green_dark))
+                holder.tvPL.setTextColor(holder.itemView.context.getColor(android.R.color.holo_green_dark))
+            }
+        } catch (_: Exception) { }
+
+        // Invested & LTP
         holder.tvInvested.text = "Invested ${stock.invested}"
-        holder.tvEvent.visibility = if (stock.event) View.VISIBLE else View.GONE
         holder.tvLtp.text = "LTP ${stock.ltp}"
-        holder.tvChange.text = stock.change
+
     }
 
     override fun getItemCount()=stocks.size

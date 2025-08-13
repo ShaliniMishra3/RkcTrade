@@ -3,20 +3,18 @@ package com.example.tradeapp
 import android.content.Intent
 
 import android.os.Bundle
-import android.widget.LinearLayout
+
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
+
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import com.example.tradeapp.Adapter.StockAdapter
-import com.example.tradeapp.Fragments.MainActivityFragment
-import com.example.tradeapp.Fragments.OrderFragment
-import com.example.tradeapp.Fragments.PortFolioFragment
-import com.example.tradeapp.Fragments.ProfileFragment
+
 import com.example.tradeapp.model.StockItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -48,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             StockItem("Property H", "NSE", "158.26", "Kanpur"),
 
             )
-        adapter = StockAdapter(stockList) // ✅ initialized before use
+        adapter =StockAdapter(stockList) // ✅ initialized before use
         recyclerView.adapter = adapter
 
 
@@ -92,6 +90,10 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
     */
+// Open BottomSheet only when item clicked
+
+
+
 
     }
 

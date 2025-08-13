@@ -14,10 +14,9 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/logo"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         app:shapeAppearanceOverlay="@style/CircleImage"
         app:layout_constraintTop_toTopOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 <!-- -->
@@ -25,13 +24,12 @@
         android:id="@+id/signInCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         android:layout_margin="20dp"
         android:padding="24dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -39,7 +37,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="24dp">
+            android:paddingBottom="24dp"
+           >
 
         <TextView
         android:layout_width="wrap_content"
@@ -83,35 +82,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp"/>
 
-          <!--
-    <LinearLayout
-        android:id="@+id/rememberLayout"
-        android:layout_width="212dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="7dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText">
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/phoneEditText"
+                android:hint="Phone No"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:background="@drawable/edittext_underline"
+                android:padding="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/districtEditText"
+                android:hint="District"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:background="@drawable/edittext_underline"
+                android:padding="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
 
-            android:layout_marginEnd="8dp"
-            android:text="Remember me"
-            android:textSize="14sp" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/rememberSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:thumbTint="@color/purple_700"
-            app:trackTint="@color/purple_200" />
-
-    </LinearLayout>
-    -->
 
             <LinearLayout
                 android:id="@+id/rememberLayout"
@@ -119,8 +118,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/districtEditText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 

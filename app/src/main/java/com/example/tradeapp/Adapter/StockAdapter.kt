@@ -4,11 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tradeapp.R
+import com.example.tradeapp.StockBottomSheet
 import com.example.tradeapp.model.StockItem
 
 class StockAdapter(private val stocks:List<StockItem>): RecyclerView.Adapter<StockAdapter.StockViewHolder>(){
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -43,6 +47,10 @@ class StockAdapter(private val stocks:List<StockItem>): RecyclerView.Adapter<Sto
             holder.separatorLine.visibility = View.GONE
         } else {
             holder.separatorLine.visibility = View.VISIBLE
+        }
+        holder.itemView.setOnClickListener {
+            val bottomSheet = StockBottomSheet()
+            bottomSheet.show((it.context as AppCompatActivity).supportFragmentManager, "StockBottomSheet")
         }
 
     }
