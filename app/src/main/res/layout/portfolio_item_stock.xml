@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp"
+    android:background="@android:color/white">
+
+    <!-- First row: Qty, Avg, % Change -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/tvQtyAvg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qty. 3019 • Avg. 1.31"
+            android:textSize="12sp"
+            android:textColor="@color/grayLight" />
+
+        <TextView
+            android:id="@+id/tvPercentChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-30.93%"
+            android:textSize="12sp"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+    <!-- Stock Name -->
+    <TextView
+        android:id="@+id/tvStockName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BIOGEN"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp" />
+
+    <!-- Second row: Invested, EVENT Tag, LTP and change -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginTop="2dp">
+
+        <!-- Left part: Invested + EVENT -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvInvested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invested 3,977.41"
+                android:textSize="12sp"
+                android:textColor="@color/grayLight" />
+
+            <TextView
+                android:id="@+id/tvEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EVENT"
+                android:textSize="10sp"
+                android:textColor="@color/blueLight"
+                android:paddingHorizontal="4dp"
+                android:background="@drawable/bg_event_tag"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Right part: LTP + change -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvLtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LTP 0.91"
+                android:textSize="12sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(-1.09%)"
+                android:textSize="12sp"
+                android:layout_marginStart="4dp"
+                android:textColor="@color/red" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

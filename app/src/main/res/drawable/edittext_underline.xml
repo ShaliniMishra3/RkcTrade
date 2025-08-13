@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Focused state (when the EditText is selected) -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <size android:height="2dp" />
+            <solid android:color="#CCCCCC" /> <!-- Purple underline -->
+        </shape>
+    </item>
+
+    <!-- Default (unfocused) state -->
+    <item>
+        <shape android:shape="rectangle">
+            <size android:height="1dp" />
+            <solid android:color="#F5F5F5" /> <!-- Gray underline -->
+        </shape>
+    </item>
+
+</selector>
