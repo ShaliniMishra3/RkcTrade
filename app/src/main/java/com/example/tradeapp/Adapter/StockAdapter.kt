@@ -10,7 +10,8 @@ import com.example.tradeapp.R
 import com.example.tradeapp.StockBottomSheet
 import com.example.tradeapp.model.StockItem
 
-class StockAdapter(private val stocks:List<StockItem>): RecyclerView.Adapter<StockAdapter.StockViewHolder>(){
+class StockAdapter(private val stocks:List<StockItem>):
+    RecyclerView.Adapter<StockAdapter.StockViewHolder>(){
 
 
     override fun onCreateViewHolder(
@@ -26,7 +27,7 @@ class StockAdapter(private val stocks:List<StockItem>): RecyclerView.Adapter<Sto
         val name:TextView=view.findViewById(R.id.textStockName)
         val exchange: TextView =view.findViewById(R.id.textStockExchange)
         val price:TextView=view.findViewById(R.id.textStockPrice)
-        val change:TextView=view.findViewById(R.id.textStockExchange)
+        val change:TextView=view.findViewById(R.id.textStockChange)
 
         val separatorLine: View = itemView.findViewById(R.id.separatorLine)
 
