@@ -15,7 +15,7 @@
     android:background="@android:color/white"
     android:padding="16dp">
 
-    <!-- ==== Header (Stock name + Price) ==== -->
+    <!-- ==== Header (Stock name + Price)  -->
     <LinearLayout
         android:id="@+id/headerSection"
         android:layout_width="0dp"
