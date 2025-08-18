@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main"
+    android:background="#F5F5F5">
+
+    <!-- 🔹 Top Bar -->
+    <!--
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/white"
+        app:title="Funds"
+
+        app:titleTextColor="@android:color/black"
+        />
+-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@android:color/white"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- Back Arrow Icon -->
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Back" />
+
+        <!-- Spacer to push title to center -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Centered Title -->
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Funds"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+
+        <!-- Spacer to balance the left icon -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!-- 🔹 Card for Available Margin -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+
+        app:cardCornerRadius="7dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="23dp"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvAvailableMarginLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Available margin (Cash + Collateral)"
+                    android:textColor="#888888"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_info"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAvailableMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹0.00"
+                android:textColor="#0066FF"
+                android:textSize="24sp"
+                android:layout_marginTop="7dp" />
+
+            <TextView
+                android:id="@+id/tvViewStatement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View statement"
+                android:textColor="#0066FF"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 🔹 Buttons: Add funds & Withdraw -->
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnAddFunds"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:text="Add funds"
+            android:backgroundTint="#28A745"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnWithdraw"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:text="Withdraw"
+            android:backgroundTint="#0066FF"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+    -->
+    <!-- 🔹 Available cash & Used margin -->
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="50dp"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available cash"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+
+            <TextView
+                android:id="@+id/tvAvailableCash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Used margin"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+
+            <TextView
+                android:id="@+id/tvUsedMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+-->
+
+    <!-- new code -->
+    <!-- 🔹 Row 1: Add funds + Withdraw buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddFunds"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="+ Add funds"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_green"
+            android:backgroundTint="@null"           android:textSize="14sp"
+        android:layout_marginEnd="8dp"/>
+
+<!--
+        <Button
+            android:id="@+id/btnWithdraw"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="↻ Withdraw"
+            android:backgroundTint="@null"
+            android:background="@drawable/rounded_green"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp"/>
+-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWithdraw"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="↻ Withdraw"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@null"
+            android:background="@drawable/rounded_blue"
+            android:layout_marginStart="8dp"/>
+
+
+    </LinearLayout>
+
+
+    <!-- 🔹 Row 2: Available cash + Used margin -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="8dp">
+
+        <!-- Available cash -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available cash"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+
+            <TextView
+                android:id="@+id/tvAvailableCash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Used margin -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Used margin"
+                android:textSize="12sp"
+                android:textColor="#888888" />
+
+            <TextView
+                android:id="@+id/tvUsedMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- Gray Line Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/gray1" />
+
+
+    <!-- 🔹 List of Fund Items -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+           >
+
+            <!-- Each row: Label + Value -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/gray1"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Opening balance"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+
+            <!-- Repeat similar rows -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Payin"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <!-- Repeat for Payout, SPAN, Delivery margin, Exposure, Option premium, Collateral (Liquid funds), Collateral (Equity), Total collateral -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:background="@color/gray1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Payout"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="SPAN"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="12dp"
+                android:paddingBottom="5dp"
+                android:background="@color/gray1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Delievery Margin"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Exposure"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:background="@color/gray1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Option Premium"
+                    android:textColor="#000000"
+
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Gray Line Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/gray1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="12dp"
+                android:background="@color/gray1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Collateral (liquid funds)"
+                    android:textColor="#000000"
+
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Collateral (Equity)"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="5dp"
+                android:background="@color/gray1"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Total Collateral"
+                    android:textColor="#000000"
+
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <!-- 🔹 List of Items -->
+    <!--
+    <LinearLayout
+        android:id="@+id/llFundsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp">
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowOpeningBalance"
+            android:tag="Opening balance" />
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowPayin"
+            android:tag="Payin" />
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowPayout"
+            android:tag="Payout" />
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowSPAN"
+            android:tag="SPAN" />
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowDeliveryMargin"
+            android:tag="Delivery margin" />
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowExposure"
+            android:tag="Exposure" />
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowOptionPremium"
+            android:tag="Option premium" />
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowCollateralLiquid"
+            android:tag="Collateral (Liquid funds)" />
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowCollateralEquity"
+            android:tag="Collateral (Equity)" />
+
+
+        <include layout="@layout/item_fund_row"
+            android:id="@+id/rowTotalCollateral"
+            android:tag="Total collateral" />
+    </LinearLayout>
+    -->
+</LinearLayout>
+

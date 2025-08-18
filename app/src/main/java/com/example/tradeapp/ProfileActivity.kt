@@ -3,6 +3,7 @@ package com.example.tradeapp
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -33,5 +34,18 @@ class ProfileActivity : AppCompatActivity() {
       findViewById<LinearLayout>(R.id.nav_profile).setOnClickListener{
           startActivity(Intent(this,ProfileActivity::class.java))
       }
+
+        val tvFunds=findViewById<TextView>(R.id.funds)
+        tvFunds.setOnClickListener {
+            val intent=Intent(this,FundsActivity::class.java)
+            startActivity(intent)
+        }
+        val tvBankDetail=findViewById<TextView>(R.id.bankDetails)
+        tvBankDetail.setOnClickListener {
+            val intent=Intent(this,BankDetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
