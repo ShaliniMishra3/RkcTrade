@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tradeapp.R
 import com.example.tradeapp.StockBottomSheet
-import com.example.tradeapp.model.StockItem
+import com.example.tradeapp.StockItem
 
 class StockAdapter(private val stocks:List<StockItem>):
     RecyclerView.Adapter<StockAdapter.StockViewHolder>(){

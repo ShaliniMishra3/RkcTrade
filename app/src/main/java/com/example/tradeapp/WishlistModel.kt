@@ -1,4 +1,4 @@
-package com.example.tradeapp.model
+package com.example.tradeapp
 
 data class StockItem(
     val name:String,
