@@ -88,7 +88,7 @@
         app:elevation="0dp" />
     </LinearLayout>
 
-    <!-- ==== Extra Actions (View chart / Option chain) ==== -->
+    <!-- Extra Actions (View chart / Option chain) -->
     <LinearLayout
         android:id="@+id/extraActions"
         android:layout_width="0dp"

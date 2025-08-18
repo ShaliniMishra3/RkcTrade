@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             StockItem("Property I", "NSE", "158.26", "Delhi"),
             StockItem("Property J", "NSE", "158.26", "Allahabad"),
             StockItem("Property K", "NSE", "158.26", "Kanpur"),
+            StockItem("Property L", "NSE", "158.26", "Kanpur"),
             )
 
         adapter =StockAdapter(stockList) // ✅ initialized before use
