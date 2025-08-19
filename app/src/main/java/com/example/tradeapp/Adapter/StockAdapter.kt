@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tradeapp.R
 import com.example.tradeapp.StockBottomSheet
-import com.example.tradeapp.StockItem
 
-class StockAdapter(private val stocks:List<StockItem>):
+import com.example.tradeapp.model.StockItem
+
+class StockAdapter(private val stocks:List<StockItem>,
+                   private val onItemClick: (StockItem, AppCompatActivity) -> Unit  ):
     RecyclerView.Adapter<StockAdapter.StockViewHolder>(){
 
 
@@ -49,9 +51,15 @@ class StockAdapter(private val stocks:List<StockItem>):
         } else {
             holder.separatorLine.visibility = View.VISIBLE
         }
+        /*
         holder.itemView.setOnClickListener {
             val bottomSheet = StockBottomSheet()
             bottomSheet.show((it.context as AppCompatActivity).supportFragmentManager, "StockBottomSheet")
+        }
+*/
+        // 🔥 delegate click to activity
+        holder.itemView.setOnClickListener {
+            onItemClick(item, it.context as AppCompatActivity)
         }
 
     }

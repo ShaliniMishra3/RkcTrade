@@ -1,24 +1,29 @@
 package com.example.tradeapp
 
 import android.content.Intent
-
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
-import com.example.tradeapp.Adapter.StockAdapter
-import com.example.tradeapp.StockItem
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.tradeapp.Adapter.StockAdapter
+import com.example.tradeapp.model.StockItem
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var recyclerView:RecyclerView
-    private lateinit var adapter:StockAdapter
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: StockAdapter
+    private lateinit var session: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -26,72 +31,99 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // val profileIcon: item =findViewById(R.id.nav_profile)
+        session = SessionManager(this)
+        setupRecyclerView()
+        setupNavigation()
+    }
+
+    private fun setupRecyclerView() {
         recyclerView = findViewById(R.id.stockRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
         val stockList = listOf(
-            StockItem("Property A", "INDICES", "24,427.45", "Lucknow"),
-            StockItem("Property B", "INDICES", "55,157.10", "Lucknow"),
-            StockItem("Property C", "NSE", "1,374.20", "Lucknow"),
-            StockItem("Property D", "NSE", "158.26", "Ayodhya"),
-            StockItem("Property E", "NSE", "433.15", "Ayodhya"),
-            StockItem("Property F", "NSE", "421.75", "Mathura"),
-            StockItem("Property G", "NSE", "274.55", "Mathura"),
-            StockItem("Property H", "NSE", "158.26", "Kanpur"),
-            StockItem("Property I", "NSE", "158.26", "Kanpur"),
-            StockItem("Property J", "NSE", "158.26", "Lucknow"),
-            StockItem("Property K", "NSE", "158.26", "Kanpur"),
-
-
-
-            )
-        adapter =StockAdapter(stockList) // ✅ initialized before use
-        recyclerView.adapter = adapter
-/*
-
-        val navMap = mapOf(
-            R.id.nav_orders to OrderActivity::class.java,
-            R.id.nav_portfolio to PortfolioActivity::class.java,
-            R.id.nav_profile to ProfileActivity::class.java
+            StockItem("Property A", "Lucknow", "24,427.45", "INDICES"),
+            StockItem("Property B", "Lucknow", "55,157.10", "INDICES"),
+            StockItem("Property C", "Lucknow", "1,374.20", "NSE"),
+            StockItem("Property D", "Ayodhya", "158.26", "NSE"),
+            StockItem("Property E", "Ayodhya", "433.15", "NSE"),
+            StockItem("Property F", "Madurai", "421.75", "NSE"),
+            StockItem("Property G", "Kanpur", "274.55", "Indices"),
+            StockItem("Property H", "Kanpur", "158.26", "NSE"),
+            StockItem("Property I", "Kanpur", "158.26", "NSE"),
+            StockItem("Property J", "Lucknow", "158.26", "NSE"),
+            StockItem("Property K", "Kanpur", "158.26", "Indices")
         )
 
+        adapter = StockAdapter(stockList) { stock, _ ->
+            val bottomSheet = StockBottomSheet(stock)
+            bottomSheet.show(supportFragmentManager, "StockBottomSheet")
+        }
+        recyclerView.adapter = adapter
+    }
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNav.setOnItemSelectedListener { item ->
-            navMap[item.itemId]?.let {
-                startActivity(Intent(this, it))
+    private fun setupNavigation() {
+        val navWatchlist = findViewById<LinearLayout>(R.id.nav_watchlist)
+        val navOrders = findViewById<LinearLayout>(R.id.nav_orders)
+        val navPortfolio = findViewById<LinearLayout>(R.id.nav_portfolio)
+        val navProfile = findViewById<LinearLayout>(R.id.nav_profile)
+
+        val allNavItems = listOf(navWatchlist, navOrders, navPortfolio, navProfile)
+
+        // Set default highlight (Current: Watchlist)
+        highlightSelectedNav(navWatchlist, allNavItems)
+
+        // Click listeners for each item
+        navWatchlist.setOnClickListener {
+            highlightSelectedNav(navWatchlist, allNavItems)
+            // No navigation needed since it's current screen
+        }
+
+        navOrders.setOnClickListener {
+            highlightSelectedNav(navOrders, allNavItems)
+            startActivity(Intent(this, OrderActivity::class.java))
+            finish()
+        }
+
+        navPortfolio.setOnClickListener {
+            highlightSelectedNav(navPortfolio, allNavItems)
+            startActivity(Intent(this, PortfolioActivity::class.java))
+            finish()
+        }
+
+        navProfile.setOnClickListener {
+            highlightSelectedNav(navProfile, allNavItems)
+            startActivity(Intent(this, ProfileActivity::class.java))
+            finish()
+        }
+
+        // Launch button at top
+        findViewById<TextView>(R.id.launchText).setOnClickListener {
+            startActivity(Intent(this, LaunchActivity::class.java))
+        }
+    }
+
+    private fun highlightSelectedNav(selectedItem: LinearLayout, allItems: List<LinearLayout>) {
+        val blue = getColor(R.color.blue) // You can define #2196F3 in colors.xml as blue_500
+        val gray = getColor(android.R.color.darker_gray)
+
+        for (item in allItems) {
+            val icon = item.getChildAt(0) as ImageView
+            val label = item.getChildAt(1) as TextView
+
+            if (item == selectedItem) {
+                icon.setColorFilter(blue)
+                label.setTextColor(blue)
+            } else {
+                icon.setColorFilter(gray)
+                label.setTextColor(gray)
             }
-            true
-        }
-    }
-
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commit()
-    }
-    */
-// Open BottomSheet only when item clicked
-
-//for navigation
-        findViewById<LinearLayout>(R.id.nav_watchlist).setOnClickListener{
-            startActivity(Intent(this,MainActivity::class.java))
-
-        }
-        findViewById<LinearLayout>(R.id.nav_orders).setOnClickListener{
-            startActivity(Intent(this,OrderActivity::class.java))
-        }
-        findViewById<LinearLayout>(R.id.nav_portfolio).setOnClickListener{
-            startActivity(Intent(this,PortfolioActivity::class.java))
-        }
-        findViewById<LinearLayout>(R.id.nav_profile).setOnClickListener{
-            startActivity(Intent(this,ProfileActivity::class.java))
         }
 
 
-    }
+    }}
 
-}
+
+
 
 
 

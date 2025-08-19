@@ -21,9 +21,18 @@ class SplashActivity : AppCompatActivity() {
         }
         // Delay for the 3 seconds to go to MainActivity Page
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish() // close splash screen
+
+            val sessionManager = SessionManager(this)
+           // SessionManager.setUnlocked(false)
+            sessionManager.setUnlocked(false)
+
+            if (sessionManager.isLoggedIn()) {
+                startActivity(Intent(this, MainActivity::class.java))
+
+            } else {
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+            finish()
         }, 3000)
     }
 }

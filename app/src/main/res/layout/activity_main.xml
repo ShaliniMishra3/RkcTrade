@@ -7,19 +7,44 @@
     android:layout_height="match_parent"
     android:background="#F4F5F7">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <!-- Title Row -->
+    <LinearLayout
+        android:id="@+id/titleRow"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Current Watchlist"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginStart="16dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Left: Title -->
+        <TextView
+            android:id="@+id/currentWatchlistText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Watchlist"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:gravity="start"/>
+
+        <!-- Right: Launch -->
+        <TextView
+            android:id="@+id/launchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Launch"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2196F3"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
 
     <!-- Search Card -->
     <com.google.android.material.card.MaterialCardView
@@ -32,7 +57,7 @@
         app:cardElevation="4dp"
         app:strokeColor="#E0E0E0"
         app:strokeWidth="1dp"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/titleRow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -77,10 +102,7 @@
                 android:contentDescription="Filter" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
     <!-- RecyclerView -->
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stockRecyclerView"
         android:layout_width="0dp"
@@ -139,7 +161,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_watchlist"
-                    android:tint="#333333" />
+                    app:tint="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,7 +186,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_orders"
-                    android:tint="#333333" />
+                    app:tint="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -189,7 +211,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_portfolio"
-                    android:tint="#333333" />
+                    app:tint="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -214,17 +236,34 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_profile"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ZH0599"
+                    android:text="Profile"
                     android:textSize="12sp"
                     android:textColor="#2196F3" />
             </LinearLayout>
 
         </LinearLayout>
+
+    <!-- 🔒 LOCK OVERLAY (must be last so it overlays everything) -->
+    <FrameLayout
+        android:id="@+id/lockOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔒 Screen Locked"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

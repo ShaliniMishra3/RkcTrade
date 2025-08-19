@@ -1,11 +1,9 @@
 package com.example.tradeapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.appcompat.widget.Toolbar
-
-import android.widget.TextView
-
+import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -114,6 +112,17 @@ class FundsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.rowTotalCollateral).findViewById<TextView>(R.id.tvValue).text = totalCollateral
    */
 */
+        // Handle back arrow click
+        findViewById<ImageView>(R.id.backArrow).setOnClickListener {
+            onBackPressedDispatcher.onBackPressed() // takes user back to previous screen
+        }
+        val btnAddFunds: Button = findViewById(R.id.btnAddFunds)
+
+        btnAddFunds.setOnClickListener {
+            val intent = Intent(this, AddFunds::class.java)
+            startActivity(intent)
+        }
+
 
     }
 

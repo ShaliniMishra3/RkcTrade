@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:forceDarkAllowed="false"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,6 +15,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TradeApp"
         tools:targetApi="31">
+        <activity
+            android:name=".MoneyTransfer"
+            android:exported="false" />
+        <activity
+            android:name=".MobileRegistry"
+            android:exported="false" />
+        <activity
+            android:name=".AddBenificiary"
+            android:exported="false" />
+        <activity
+            android:name=".LockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddFunds"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".LogoutScreen"
+            android:exported="false" />
+        <activity
+            android:name=".StockLaunchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LaunchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SellActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BuyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KycDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".BankDetailsActivity"
             android:exported="false" />
@@ -47,7 +89,10 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

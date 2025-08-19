@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoneyTransfer">
+    <LinearLayout
+        android:id="@+id/topBarMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Money Transfer"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <ImageView
+            android:layout_width="30sp"
+            android:id="@+id/ic_closeMoney"
+            android:layout_height="30sp"
+            android:src="@drawable/ic_close"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/topBarMobile"
+        android:id="@+id/mobileData"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="15dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Benificiary *"
+            android:textSize="20sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerBeneficiary"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_gray_border"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amount *"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_gray_border"
+            android:hint="Enter Amount"
+            android:textSize="17sp"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transfer Type"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            />
+        <Spinner
+            android:id="@+id/spinnerTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_gray_border" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:text="Transfer"
+            android:textSize="22dp"
+            android:backgroundTint="@color/blue"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

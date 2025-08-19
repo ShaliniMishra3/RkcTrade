@@ -147,6 +147,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:id="@+id/fundsLayout"
                 android:gravity="center_vertical">
 
@@ -176,7 +179,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:gravity="center_vertical">
+                android:id="@+id/bankLayout"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                >
 
                 <TextView
                     android:layout_width="0dp"
@@ -204,13 +212,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:id="@+id/profileLayout"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Profile"
+                    android:id="@+id/profileDetails"
                     android:textSize="17sp" />
 
                 <ImageView
@@ -231,7 +244,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:id="@+id/settingLayout">
 
                 <TextView
                     android:layout_width="0dp"
@@ -258,20 +275,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:id="@+id/kycLayout">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="KYC"
+                    android:id="@+id/kycDetail"
                     android:textSize="17sp" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/link"
-                    android:tint="#888888" />
+                    app:tint="#888888" />
             </LinearLayout>
 
             <View
@@ -279,13 +301,75 @@
                 android:layout_height="1dp"
                 android:background="#E0E0E0" />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:id="@+id/referralLayout">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Referral Member"
+                    android:id="@+id/referalMemeber"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/referral"
+                    app:tint="#888888" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:id="@+id/IMPSLayout">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="IMPS"
+                    android:id="@+id/IMPS"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/referral"
+                    app:tint="#888888" />
+            </LinearLayout>
+
             <!-- Logout -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:clickable="true"
+
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:id="@+id/logoutLayout">
 
                 <TextView
                     android:layout_width="0dp"
@@ -303,9 +387,6 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -329,6 +410,7 @@
                 android:id="@+id/nav_watchlist"
                 android:orientation="vertical"
                 android:gravity="center"
+
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackground">
 
@@ -386,7 +468,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_portfolio"
-                    android:tint="#333333" />
+                    app:tint="#333333" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -416,7 +498,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ZH0599"
+                    android:text="Profile"
                     android:textSize="12sp"
                     android:textColor="#2196F3" />
             </LinearLayout>

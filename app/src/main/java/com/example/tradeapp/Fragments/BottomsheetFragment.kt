@@ -1,16 +1,20 @@
 package com.example.tradeapp.Fragments
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.example.tradeapp.BuyActivity
 
 import com.example.tradeapp.R
+import com.example.tradeapp.SellActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
 
 class BottomsheetFragment : BottomSheetDialogFragment() {
 
@@ -19,7 +23,6 @@ class BottomsheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.layout_stock_bottomsheet, container, false)
-
     override fun onStart() {
         super.onStart()
 

@@ -9,16 +9,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.createBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.tabs.TabLayout.Tab
 
 class OrderActivity : AppCompatActivity() {
-    private lateinit var tabLabels:LinearLayout
-    private lateinit var tabOpen:TextView
-    private lateinit var tabExecuted:TextView
-    private lateinit var tabIndicator:View
+    private lateinit var tabLabels: LinearLayout
+    private lateinit var tabOpen: TextView
+    private lateinit var tabExecuted: TextView
+    private lateinit var tabIndicator: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,52 +45,49 @@ class OrderActivity : AppCompatActivity() {
     }
 
     private fun selectTab(index: Int, animate: Boolean) {
-           val count=tabLabels.childCount
-           if(count==0) return
+        val count = tabLabels.childCount
+        if (count == 0) return
 
         // compute equal tab width (tabLabels uses weights so each tab is same width)
-        val tabWidth= tabLabels.width/count
-        val indicatorWidth=tabIndicator.width
-        val targetX=index*tabWidth+(tabWidth-indicatorWidth)/2f
+        val tabWidth = tabLabels.width / count
+        val indicatorWidth = tabIndicator.width
+        val targetX = index * tabWidth + (tabWidth - indicatorWidth) / 2f
 
-        if(animate){
+        if (animate) {
             tabIndicator.animate()
                 .translationX(targetX)
                 .setDuration(180)
                 .start()
-        }else{
-            tabIndicator.translationX=targetX
+        } else {
+            tabIndicator.translationX = targetX
         }
         //update text color and styles
-        if(index==0){
+        if (index == 0) {
             tabOpen.setTextColor(Color.parseColor("#1976D2"))
-            tabOpen.setTypeface(null,Typeface.BOLD)
+            tabOpen.setTypeface(null, Typeface.BOLD)
             tabExecuted.setTextColor(Color.parseColor("#888888"))
-            tabExecuted.setTypeface(null,Typeface.NORMAL)
-        }else{
+            tabExecuted.setTypeface(null, Typeface.NORMAL)
+        } else {
             tabExecuted.setTextColor(Color.parseColor("#1976D2"))
-            tabExecuted.setTypeface(null,Typeface.BOLD)
+            tabExecuted.setTypeface(null, Typeface.BOLD)
             tabOpen.setTextColor(Color.parseColor("#888888"))
-            tabOpen.setTypeface(null,Typeface.NORMAL)
+            tabOpen.setTypeface(null, Typeface.NORMAL)
         }
         //
         //for navigation
-        findViewById<LinearLayout>(R.id.nav_watchlist).setOnClickListener{
-            startActivity(Intent(this,MainActivity::class.java))
+
+        findViewById<LinearLayout>(R.id.nav_watchlist).setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
 
         }
-        findViewById<LinearLayout>(R.id.nav_orders).setOnClickListener{
-            startActivity(Intent(this,OrderActivity::class.java))
+        findViewById<LinearLayout>(R.id.nav_orders).setOnClickListener {
+            startActivity(Intent(this, OrderActivity::class.java))
         }
-        findViewById<LinearLayout>(R.id.nav_portfolio).setOnClickListener{
-            startActivity(Intent(this,PortfolioActivity::class.java))
+        findViewById<LinearLayout>(R.id.nav_portfolio).setOnClickListener {
+            startActivity(Intent(this, PortfolioActivity::class.java))
         }
-        findViewById<LinearLayout>(R.id.nav_profile).setOnClickListener{
-            startActivity(Intent(this,ProfileActivity::class.java))
+        findViewById<LinearLayout>(R.id.nav_profile).setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
-
     }
-
-
-
 }

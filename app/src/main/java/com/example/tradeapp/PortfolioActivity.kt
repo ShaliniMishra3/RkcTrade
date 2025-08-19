@@ -46,6 +46,7 @@ class PortfolioActivity : AppCompatActivity() {
         recyclerView.adapter=adapter
 
         //for navigation
+
         findViewById<LinearLayout>(R.id.nav_watchlist).setOnClickListener{
             startActivity(Intent(this,MainActivity::class.java))
 

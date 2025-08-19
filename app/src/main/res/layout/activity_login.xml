@@ -9,16 +9,112 @@
     android:background="@drawable/bg_gradient" >
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/logoImage"
-        android:layout_width="150dp"
+        android:layout_width="210dp"
         android:layout_height="150dp"
         android:src="@drawable/logo"
         android:layout_marginTop="40dp"
-                app:shapeAppearanceOverlay="@style/CircleImage"
+        app:shapeAppearanceOverlay="@style/CircleImage"
         app:layout_constraintTop_toTopOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        android:alpha="0.95"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your journey starts here 🚀"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:textColor="#212121"/>
+
+            <!-- Email with Icon -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                app:startIconDrawable="@drawable/ic_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password with Icon -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:layout_marginTop="12dp"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Login"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/btn_gradient"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/ForgetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:textColor="#1565C0"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="12dp"/>
+
+            <TextView
+                android:id="@+id/signUpTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Don’t have an account? Sign Up"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!--
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -59,9 +155,6 @@
                 android:layout_height="1dp"
                 android:background="#BDBDBD"
                 android:layout_marginBottom="8dp" />
-
-
-
             <EditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
@@ -73,15 +166,11 @@
                 android:textColorHint="#A9A9A9"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@android:color/darker_gray" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#BDBDBD"
                 android:layout_marginBottom="16dp" />
-
-
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +180,6 @@
                 android:background="@drawable/btn_gradient"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@null"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,10 +200,8 @@
                   android:id="@+id/signUpTextView"
                   android:textColor="#000000"
                   android:textStyle="bold"/>
-
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

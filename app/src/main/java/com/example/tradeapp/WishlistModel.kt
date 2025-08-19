@@ -1,8 +1,0 @@
-package com.example.tradeapp
-
-data class StockItem(
-    val name:String,
-    val exchange:String,
-    val price:String,
-    val change:String
-)

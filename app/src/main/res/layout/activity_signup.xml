@@ -5,173 +5,360 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@drawable/bg_gradient"
-
     tools:context=".SignupActivity">
+
+    <!-- Logo -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/logoImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
         android:src="@drawable/logo"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:shapeAppearanceOverlay="@style/CircleImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-<!-- -->
+
+    <!-- Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/signInCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:padding="24dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="12dp"
         app:layout_constraintTop_toBottomOf="@id/logoImage"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Inside Card: Sign-in form -->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="24dp"
-           >
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15dp">
 
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signInTitle"
-        android:text="Sign In"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-
-        />
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:id="@+id/emailEditText"
-        android:hint="yourname@gmail.com"
-        android:inputType="textEmailAddress"
-        android:drawableEnd="@drawable/baseline_check_circle_24"
-        android:background="@drawable/edittext_underline"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/signInTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="27dp"
-        />
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/passwordEditText"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:drawableEnd="@drawable/baseline_visibility_off_24"
-            android:background="@drawable/edittext_underline"
-            android:padding="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailEditText"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="12dp"/>
-
-            <EditText
-                android:layout_width="300dp"
+            <!-- Title -->
+            <TextView
+                android:id="@+id/signInTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Create Your Account 🚀"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#1A1A1A"
+                android:layout_gravity="center"
+                android:paddingBottom="12dp"/>
+
+            <!-- Referral -->
+            <EditText
+                android:id="@+id/ReferalValue"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Referral ID (Optional)"
+                android:drawableStart="@drawable/ic_reffer"
+                android:drawablePadding="10dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Email -->
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Email Address"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:drawablePadding="10dp"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Phone -->
+            <EditText
                 android:id="@+id/phoneEditText"
-                android:hint="Phone No"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/baseline_visibility_off_24"
-                android:background="@drawable/edittext_underline"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Phone Number"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:background="@drawable/edittext_bg"
                 android:padding="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="12dp"/>
 
+            <!-- District -->
             <EditText
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/districtEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:hint="District"
-                android:inputType="textPassword"
-                android:drawableEnd="@drawable/baseline_visibility_off_24"
-                android:background="@drawable/edittext_underline"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="10dp"
+                android:background="@drawable/edittext_bg"
                 android:padding="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneEditText"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="12dp"/>
 
-
-
+            <!-- Remember me -->
             <LinearLayout
                 android:id="@+id/rememberLayout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@id/districtEditText"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                android:layout_marginTop="16dp">
 
-                <!-- Remember Me Text -->
                 <TextView
                     android:id="@+id/rememberText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Remember me"
                     android:textSize="14sp"
-                    android:layout_marginEnd="12dp"
-                    android:textColor="#000000" />
+                    android:textColor="#444"/>
 
-                <!-- Switch -->
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/rememberSwitch"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     app:thumbTint="@color/purple_700"
-                    app:trackTint="@color/purple_200" />
+                    app:trackTint="@color/purple_200"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"/>
             </LinearLayout>
 
+            <!-- Sign In Button -->
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Sign In"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:background="@drawable/btn_gradient"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-medium"/>
 
-
-
-    <Button
-          android:layout_width="300dp"
-          android:layout_height="50dp"
-           android:text="Sign In"
-          android:textAllCaps="false"
-          android:id="@+id/loginBtn"
-
-          android:textColor="@android:color/white"
-          android:background="@drawable/btn_gradient"
-          android:layout_marginTop="8dp"
-          app:layout_constraintTop_toBottomOf="@+id/rememberLayout"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/signUpTextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not registered yet?  Sign up!"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"
-
-        app:layout_constraintTop_toBottomOf="@id/loginBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <!-- Sign Up Link -->
+            <TextView
+                android:id="@+id/signUpTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? Sign In"
+                android:textColor="#1A73E8"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@drawable/bg_gradient"
+
+        tools:context=".SignupActivity">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logoImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="20dp"
+            app:shapeAppearanceOverlay="@style/CircleImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/signInCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:layout_constraintTop_toBottomOf="@id/logoImage"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+               >
+
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signInTitle"
+            android:text="Sign In"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp"
+
+            />
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/ReferalValue"
+                    android:hint="Referal Id"
+                    android:inputType="textEmailAddress"
+                    android:drawableEnd="@drawable/baseline_check_circle_24"
+                    android:background="@drawable/edittext_underline"
+                    android:padding="12dp"
+                    app:layout_constraintTop_toBottomOf="@+id/signInTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="27dp"
+                    />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id="@+id/emailEditText"
+            android:hint="yourname@gmail.com"
+            android:inputType="textEmailAddress"
+            android:drawableEnd="@drawable/baseline_check_circle_24"
+            android:background="@drawable/edittext_underline"
+            android:padding="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/ReferalValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="27dp"
+            />
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordEditText"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:drawableEnd="@drawable/baseline_visibility_off_24"
+                android:background="@drawable/edittext_underline"
+                android:padding="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phoneEditText"
+                    android:hint="Phone No"
+                    android:inputType="textPassword"
+                    android:drawableEnd="@drawable/baseline_check_circle_24"
+                    android:background="@drawable/edittext_underline"
+                    android:padding="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp"/>
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/districtEditText"
+                    android:hint="District"
+                    android:inputType="textPassword"
+                    android:drawableEnd="@drawable/baseline_check_circle_24"
+                    android:background="@drawable/edittext_underline"
+                    android:padding="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneEditText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="12dp"/>
+
+
+
+                <LinearLayout
+                    android:id="@+id/rememberLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/districtEditText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+
+                    <TextView
+                        android:id="@+id/rememberText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remember me"
+                        android:textSize="14sp"
+                        android:layout_marginEnd="12dp"
+                        android:textColor="#000000" />
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/rememberSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:thumbTint="@color/purple_700"
+                        app:trackTint="@color/purple_200" />
+                </LinearLayout>
+
+
+
+
+        <Button
+              android:layout_width="300dp"
+              android:layout_height="50dp"
+               android:text="Sign In"
+              android:textAllCaps="false"
+              android:id="@+id/loginBtn"
+
+              android:textColor="@android:color/white"
+              android:background="@drawable/btn_gradient"
+              android:layout_marginTop="8dp"
+              app:layout_constraintTop_toBottomOf="@+id/rememberLayout"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/signUpTextView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not registered yet?  Sign up!"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+
+            app:layout_constraintTop_toBottomOf="@id/loginBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    -->
