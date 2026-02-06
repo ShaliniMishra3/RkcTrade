@@ -55,7 +55,7 @@ class LaunchActivity : AppCompatActivity() {
             StockItem("Property K", "Kanpur", "158.26", "Indices"),
         )
 
-        adapter = LaunchStockAdapter(stockList)
+       adapter = LaunchStockAdapter(stockList)
         recyclerView.adapter = adapter
         */
         // ✅ Use dynamic list with API data
@@ -82,8 +82,7 @@ class LaunchActivity : AppCompatActivity() {
     }
 
     private fun fetchPropertyList() {
-        val requestBody = PropertyRequest(propertyId = "0")  // 0 or whatever id required
-        // 🔍 Debug log before sending
+        val requestBody = PropertyRequest(propertyId = "0")
         Log.d("API_DEBUG", "Sending: ${requestBody.propertyId}")
         RetrofitClient.instance.getProperties(requestBody).enqueue(object : retrofit2.Callback<PropertyResponse> {
             override fun onResponse(call: Call<PropertyResponse>, response: retrofit2.Response<PropertyResponse>) {

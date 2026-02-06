@@ -8,17 +8,7 @@
     android:background="#F5F5F5">
 
     <!-- 🔹 Top Bar -->
-    <!--
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@android:color/white"
-        app:title="Funds"
 
-        app:titleTextColor="@android:color/black"
-        />
--->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -58,18 +48,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
-
     </LinearLayout>
-
     <!-- 🔹 Card for Available Margin -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-
         app:cardCornerRadius="7dp"
         app:cardElevation="4dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,14 +76,12 @@
                     android:text="Available margin (Cash + Collateral)"
                     android:textColor="#888888"
                     android:textSize="14sp" />
-
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@drawable/ic_info"
                     android:layout_marginStart="4dp" />
             </LinearLayout>
-
             <TextView
                 android:id="@+id/tvAvailableMargin"
                 android:layout_width="wrap_content"
@@ -106,7 +90,6 @@
                 android:textColor="#0066FF"
                 android:textSize="24sp"
                 android:layout_marginTop="7dp" />
-
             <TextView
                 android:id="@+id/tvViewStatement"
                 android:layout_width="wrap_content"
@@ -117,95 +100,6 @@
                 android:layout_marginTop="8dp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <!-- 🔹 Buttons: Add funds & Withdraw -->
-    <!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp">
-
-        <Button
-            android:id="@+id/btnAddFunds"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dp"
-            android:text="Add funds"
-            android:backgroundTint="#28A745"
-            android:textColor="#FFFFFF"
-            android:layout_marginEnd="8dp" />
-
-        <Button
-            android:id="@+id/btnWithdraw"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="48dp"
-            android:text="Withdraw"
-            android:backgroundTint="#0066FF"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="8dp" />
-    </LinearLayout>
-    -->
-    <!-- 🔹 Available cash & Used margin -->
-    <!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="50dp"
-        android:weightSum="2">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Available cash"
-                android:textSize="12sp"
-                android:textColor="#888888" />
-
-            <TextView
-                android:id="@+id/tvAvailableCash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.00"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Used margin"
-                android:textSize="12sp"
-                android:textColor="#888888" />
-
-            <TextView
-                android:id="@+id/tvUsedMargin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.00"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
-        </LinearLayout>
-    </LinearLayout>
--->
-
     <!-- new code -->
     <!-- 🔹 Row 1: Add funds + Withdraw buttons -->
     <LinearLayout
@@ -215,7 +109,6 @@
         android:weightSum="2"
         android:paddingHorizontal="20dp"
         android:layout_marginTop="16dp">
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddFunds"
             android:layout_width="0dp"
@@ -224,10 +117,10 @@
             android:text="+ Add funds"
             android:textColor="@android:color/white"
             android:background="@drawable/rounded_green"
-            android:backgroundTint="@null"           android:textSize="14sp"
-        android:layout_marginEnd="8dp"/>
-
-<!--
+            android:backgroundTint="@null"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp"/>
+        <!--
         <Button
             android:id="@+id/btnWithdraw"
             android:layout_width="0dp"
@@ -238,7 +131,7 @@
             android:background="@drawable/rounded_green"
             android:textColor="@android:color/white"
             android:layout_marginStart="8dp"/>
--->
+       -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWithdraw"
             android:layout_width="0dp"
@@ -249,11 +142,7 @@
             app:backgroundTint="@null"
             android:background="@drawable/rounded_blue"
             android:layout_marginStart="8dp"/>
-
-
     </LinearLayout>
-
-
     <!-- 🔹 Row 2: Available cash + Used margin -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -262,7 +151,6 @@
         android:weightSum="2"
         android:paddingHorizontal="16dp"
         android:layout_marginTop="8dp">
-
         <!-- Available cash -->
         <LinearLayout
             android:layout_width="0dp"
@@ -270,7 +158,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -288,7 +175,6 @@
                 android:textColor="#000000"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
-
         <!-- Used margin -->
         <LinearLayout
             android:layout_width="0dp"
@@ -296,14 +182,12 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Used margin"
                 android:textSize="12sp"
                 android:textColor="#888888" />
-
             <TextView
                 android:id="@+id/tvUsedMargin"
                 android:layout_width="wrap_content"
@@ -313,9 +197,7 @@
                 android:textSize="16sp"
                 android:textColor="#000000"
                 android:layout_marginTop="2dp" />
-
         </LinearLayout>
-
     </LinearLayout>
     <!-- Gray Line Divider -->
     <View
@@ -325,24 +207,18 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@color/gray1" />
-
-
     <!-- 🔹 List of Fund Items -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="20dp"
-
         >
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
-           >
-
+            >
             <!-- Each row: Label + Value -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -352,7 +228,6 @@
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="5dp"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -360,7 +235,6 @@
                     android:text="Opening balance"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -368,9 +242,6 @@
                     android:textColor="#000000"
                     android:textSize="14sp" />
             </LinearLayout>
-
-
-
             <!-- Repeat similar rows -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -379,7 +250,6 @@
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="5dp"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -387,7 +257,6 @@
                     android:text="Payin"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -395,10 +264,7 @@
                     android:textColor="#000000"
                     android:textSize="14sp" />
             </LinearLayout>
-
-
             <!-- Repeat for Payout, SPAN, Delivery margin, Exposure, Option premium, Collateral (Liquid funds), Collateral (Equity), Total collateral -->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -407,7 +273,6 @@
                 android:paddingHorizontal="5dp"
                 android:background="@color/gray1"
                 android:gravity="center_vertical">
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"

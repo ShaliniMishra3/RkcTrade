@@ -19,17 +19,14 @@ class FundsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         // 🔹 Handle back button
             /*
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.setNavigationOnClickListener { finish() }
         */
-            
         // 🔹 First set row labels dynamically
         /*
         setupFundLabels()
-
         setFundsData(
             availableMargin = "₹0.00",
             availableCash = "0.00",
@@ -67,8 +64,6 @@ class FundsActivity : AppCompatActivity() {
             row.findViewById<TextView>(R.id.tvLabel).text = label
         }
     }
-
-
     private fun setFundsData(
         availableMargin: String,
         availableCash: String,
@@ -122,7 +117,11 @@ class FundsActivity : AppCompatActivity() {
             val intent = Intent(this, AddFunds::class.java)
             startActivity(intent)
         }
-
+       val withdrawClick=findViewById<Button>(R.id.btnWithdraw)
+       withdrawClick.setOnClickListener {
+           val intent=Intent(this, WithdrawActivity::class.java)
+           startActivity(intent)
+       }
 
     }
 

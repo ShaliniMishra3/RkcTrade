@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.tradeapp.model.PropertyItem
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -24,9 +26,10 @@ class LaunchStockBottomSheetFragment(private val propertyItem: PropertyItem) : B
         val quantityInput = view.findViewById<EditText>(R.id.quantityInput)
         val propertyAmount = view.findViewById<EditText>(R.id.propertyAmount)
         val finalAmount = view.findViewById<EditText>(R.id.finalAmount)
-
         val submitButton = view.findViewById<Button>(R.id.submitButton)
-
+        submitButton.setOnClickListener {
+            showConfirmDialog()
+        }
         propertyName.text = propertyItem.propertyName
         propertyRate.text = "Rate: ${propertyItem.rate.toString()}"
         propertyValue.text = "Balance Unit: ${propertyItem.balanceArea}"
@@ -35,21 +38,26 @@ class LaunchStockBottomSheetFragment(private val propertyItem: PropertyItem) : B
                 val qtyText = s.toString()
                 val quantity = if (qtyText.isNotEmpty()) qtyText.toInt() else 0
                 val rate = propertyItem.rate.toInt()
-                // 🔹 Multiply rate × quantity
                 val propertyAmt = quantity * rate
                 propertyAmount.setText(propertyAmt.toString())
-                // 🔹 Calculate 0.25% of property amount
                 val finalAmt = (propertyAmt * 0.25) / 100
                 finalAmount.setText(finalAmt.toString())
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
-        //  propertyAddress.text = propertyItem.Property_Address
-        submitButton.setOnClickListener {
-            dismiss()
-        }
         return view
+    }
+    private fun showConfirmDialog(){
+        AlertDialog.Builder(requireContext())
+            .setTitle("Are You sure?")
+            .setMessage("You won't be able to revert this!")
+            .setPositiveButton("Yes"){_, _ ->
+                dismiss()
+                Toast.makeText(requireContext(),"Submitted successfully", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Cancel",null)
+            .show()
     }
 }
 

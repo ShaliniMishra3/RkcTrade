@@ -16,6 +16,9 @@
         android:theme="@style/Theme.TradeApp"
         tools:targetApi="31">
         <activity
+            android:name=".WithdrawActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoneyTransfer"
             android:exported="false" />
         <activity

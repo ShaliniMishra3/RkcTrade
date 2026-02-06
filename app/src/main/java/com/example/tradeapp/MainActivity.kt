@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         val navOrders = findViewById<LinearLayout>(R.id.nav_orders)
         val navPortfolio = findViewById<LinearLayout>(R.id.nav_portfolio)
         val navProfile = findViewById<LinearLayout>(R.id.nav_profile)
-
         val allNavItems = listOf(navWatchlist, navOrders, navPortfolio, navProfile)
 
         // Set default highlight (Current: Watchlist)
@@ -77,25 +76,21 @@ class MainActivity : AppCompatActivity() {
             highlightSelectedNav(navWatchlist, allNavItems)
             // No navigation needed since it's current screen
         }
-
         navOrders.setOnClickListener {
             highlightSelectedNav(navOrders, allNavItems)
             startActivity(Intent(this, OrderActivity::class.java))
             finish()
         }
-
         navPortfolio.setOnClickListener {
             highlightSelectedNav(navPortfolio, allNavItems)
             startActivity(Intent(this, PortfolioActivity::class.java))
             finish()
         }
-
         navProfile.setOnClickListener {
             highlightSelectedNav(navProfile, allNavItems)
             startActivity(Intent(this, ProfileActivity::class.java))
             finish()
         }
-
         // Launch button at top
         findViewById<TextView>(R.id.launchText).setOnClickListener {
             startActivity(Intent(this, LaunchActivity::class.java))
@@ -103,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun highlightSelectedNav(selectedItem: LinearLayout, allItems: List<LinearLayout>) {
-        val blue = getColor(R.color.blue) // You can define #2196F3 in colors.xml as blue_500
+        val blue = getColor(R.color.blue)
         val gray = getColor(android.R.color.darker_gray)
 
         for (item in allItems) {
@@ -118,9 +113,8 @@ class MainActivity : AppCompatActivity() {
                 label.setTextColor(gray)
             }
         }
-
-
-    }}
+    }
+}
 
 
 

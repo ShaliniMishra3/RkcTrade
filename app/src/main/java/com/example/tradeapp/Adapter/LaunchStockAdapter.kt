@@ -21,36 +21,25 @@ class LaunchStockAdapter(
         val change: TextView = view.findViewById(R.id.textStockChange)
         val separatorLine: View = view.findViewById(R.id.separatorLine)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchStockViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_stock, parent, false)
         return LaunchStockViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: LaunchStockViewHolder, position: Int) {
         val item = properties[position]
-
-        // Set property details
-        /*
-        holder.name.text = item.Property_name
-        holder.exchange.text = item.Property_Address
-        holder.price.text = item.Rate.toString()
-
-         */
-
         holder.name.text = item.propertyName
         holder.exchange.text = item.propertyAddress
         holder.price.text = item.rate.toString()
 
-        // Alternate NSE/INDICES (optional: replace with actual field if available)
+
         holder.change.text = if (position % 2 == 0) "NSE" else "INDICES"
 
-        // Hide separator for last item
+
         holder.separatorLine.visibility =
             if (position == properties.size - 1) View.GONE else View.VISIBLE
 
-        // Optional: show bottom sheet
+
         holder.itemView.setOnClickListener {
             val bottomSheet = LaunchStockBottomSheetFragment(item) // remove item if not used
             bottomSheet.show(
@@ -61,8 +50,6 @@ class LaunchStockAdapter(
     }
 
     override fun getItemCount(): Int = properties.size
-
-    // ✅ Used to update the list dynamically
     fun updateList(newList: List<PropertyItem>) {
         properties = newList
         notifyDataSetChanged()
